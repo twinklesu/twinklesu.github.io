@@ -1,10 +1,10 @@
 # Site settings
-name: name
-email: email
+name: Subin
+email: twinklesu914@gmail.com
 url: url
 description: "A blog and a portfolio"
 author: "author"
-title: "BlogFolio"
+title: "숩니의 꼼지락 개발 블로그"
 permalink: pretty
 baseurl: ""
 

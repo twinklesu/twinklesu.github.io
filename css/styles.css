@@ -1,3 +1,5 @@
+@CHARSET "UTF-8";
+
 .footer {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem;
@@ -11,7 +13,7 @@ body {
   position: relative;
   padding-bottom: 6rem;
   min-height: 100%;
-  font-family: "Crimson Text", "Georgia", serif;
+  font-family: 'Poor Story', cursive;
 }
 
 .page-footer {

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Hello World!"
-date: 2017-06-09 12:00:00 -0500
+title: "첫 게시물"
+date: 2020-07-22 12:50:00 -0500
 ---
 
-Hey, it's just my first post!
+Why this font so wierd!!!!
 
 From [http://slipsum.com/lite/](http://slipsum.com/lite/):
 

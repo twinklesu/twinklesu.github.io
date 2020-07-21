@@ -1,17 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-@font_face{
-  font-family: "Poor Story";
-  src: url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
-  font-style: cursive;
-}
-@font_face{
-  font-family: 'Roboto';
-  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-  unicode-range: U+0020-007E;
-  font-style: sans-serif;
-}
 .footer {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem;
@@ -26,6 +15,10 @@ body {
   padding-bottom: 6rem;
   min-height: 100%;
   font-family: 'Roboto', sans-serif;
+}
+
+.media.title.is-2{
+  font-family: 'Poor Story', cursive;
 }
 
 .page-footer {

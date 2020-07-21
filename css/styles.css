@@ -30,6 +30,9 @@ body {
   min-height: 100%;
   font-family: 'Sans';
 }
+.title.is-2{
+  font-size: 30px;
+}
 
 .page-footer {
   position: absolute;

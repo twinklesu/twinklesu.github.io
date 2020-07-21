@@ -6,13 +6,13 @@
 @font-face{
   font-family: 'Sans";
   src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-  font_style: sans-sefit;
+  font_style: sans-serif;
 }
 @font-face{
   font-family: 'Sans";
   src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
   unicode-range: U+0020-007E;
-  font_style: sans-sefit;
+  font_style: sans-serif;
 }
 
 .footer {

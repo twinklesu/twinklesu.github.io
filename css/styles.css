@@ -28,6 +28,7 @@ body {
   position: relative;
   padding-bottom: 6rem;
   min-height: 100%;
+  font-family: 'Sans';
 }
 
 .page-footer {

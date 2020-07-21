@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+@font-face{
+  font-family: 'Sans";
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+  font_style: sans-sefit;
+}
+@font-face{
+  font-family: 'Sans";
+  src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+  unicode-range: U+0020-007E;
+  font_style: sans-sefit;
+}
 
 .footer {
   background-color: whitesmoke;
@@ -14,11 +28,6 @@ body {
   position: relative;
   padding-bottom: 6rem;
   min-height: 100%;
-  font-family: 'Roboto', sans-serif;
-}
-
-.media.title.is-2{
-  font-family: 'Poor Story', cursive;
 }
 
 .page-footer {

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .footer {
   background-color: whitesmoke;
@@ -14,7 +13,7 @@ body {
   position: relative;
   padding-bottom: 6rem;
   min-height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poor Story', cursive;
 }
 
 .page-footer {
@@ -36,5 +35,4 @@ body {
 .hero.is-primary {
   background-color: #FF8C69;
   color: white;
-  font-family: 'Poor Story', cursive;
 }

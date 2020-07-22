@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: ture
+comments: true
 title: "첫 게시물"
 date: 2020-07-22 12:50:00 -0500
 ---

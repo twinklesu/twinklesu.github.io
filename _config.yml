@@ -7,10 +7,12 @@ author: "author"
 title: "숩니의 꼼지락 개발 블로그"
 permalink: pretty
 baseurl: ""
+layout: default
+comments: true
 
 # social
 github:
-  username: username
+  username: twinklesu
 
-twitter:
-  username: username
+instagram:
+  username: twinklesu14

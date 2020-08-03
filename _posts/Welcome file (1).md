@@ -1,0 +1,130 @@
+﻿# 03. 함수와 함수형 프로그래밍
+
+## 1. 함수 선언하고 호출하기
+- 함수를 선언 할 때는 **parameter**(매개변수)
+- 함수를 호출할 때 넘기는 **argument**(인자)
+ 
+ * **Unit**: 함수의 return 값이 없을 때 사용하는 특수 자료형 (생략 가능)
+ * `fun add(name: String, email: String ="default")`로 **default**값 지정 가능
+ * **vararg** 사용하여 가변인자 전달 가능 :`fun add(vararg counts: Int)`. counts 가 array 형태로 전달됨 (in 사용해 for문 접근)
+
+## 2. 함수형 프로그래밍
+- **다중 패러다임 언어**: **함수**형 프로그래밍(FP: Functional Programming)과 **객체 지향** 프로그래밍(OOP)을 모두 지원
+- **함수형 프로그래밍**
+	- **순수 함수** 사용
+		- 	같은 arg에 대해 항상 같은 결과를 리턴
+		- 함수 외부의 어떤 상태도 바꾸지 않음
+		- ```fun sum(a:Int, b:Int) = a+b```
+	- **람다식** 사용
+		- 이름 없는 **일급 객체**
+		- `{x,y -> x+y}`
+		- 다른 함수의 인자로 넘기는 함수
+		- 함수의 결괏값으로 반환하는 함수
+		- 변수에 저장하는 함수
+	- **고차 함수(High-order Func)** 사용
+		- 다른 함수를 인자로 사용하거나
+		- 함수를 결괏값으로 반환
+```
+fun main(){ 
+	println(highFunc({x,y ->x+y},10,20)) //람다식 함수를 인자로 넘김
+	}
+fun highFunc(sum:(Int, Int)->Int, a:Int, b:Int):Int = sum(a,b) //sum의 파라미터가 함수
+```
+
+- **일급 객체(First Class Citizen)**
+	- 함수의 인자로 전달 가능
+	- 함수의 반환값에 사용 가능
+	- 변수에 담을 수 있음
+
+## 3. 고차 함수와 람다식
+- 변수에 람다식 할당
+```
+val multi = {x:Int, y:Int -> x*y}
+res = multi(10,20)
+```
+- 여러줄의 표현식
+```
+val multi: (Int,Int)->Int = {x, y ->
+	println("x*y")
+	x*y //이 마지막 줄이 리턴
+```
+- 값에 의한 호출
+```
+fun main(){
+	val result = callByValue(lambda()) //람다식 '함수' 호출
+}
+fun callByValue(b:Boolean): Boolean{ //람다식 함수 먼저 실행
+	//이후 함수 실행
+	return b //파라미터 변수로 리턴
+}
+val lambda: ()->Boolean ={
+	true
+}
+```
+- 이름에 의한 호출: 람다식 사용이 필수적일때만 호출할 수 있음
+```
+fun main(){
+	val result = callByName(otherLambda) //람다식 '이름' 호출 ()없다.
+}
+fun callByName(b: () ->Boolean): Boolean{ //파라미터가 람다식
+	return b() //함수 반환. 이때 람다식 실행
+}
+val otherLambda: ()->Boolean = {
+	true
+}
+```
+- 일반 함수 람다식으로 호출하기 (**::**)
+```
+funcParam(3,2, ::sum)
+
+fun sum(a:Int, b:Int) = a+b
+fun funcParam(a:Int, b:Int, c:(Int, Int)->Int): Int{
+	return c(a,b)
+}
+```
+- 특정 람다식의 파라미터를 생략하고 싶은 경우 '_'로 대체 가능
+- 일반 파라미터와 람다식 파라미터 함께 사용하는 경우, 맨 마지막 람다식 파라미터는 `withArgs("args1", "argas2"){a,b->"Hello World! $a $b}`로 사용 가능
+
+# 4. 고차 함수와 람다식의 사례 알아보기
+## 동기화를 위한 코드
+- **동기화**: 변경이 일어나면 안되는 특정 코드 보호(**임계 영역, Critical Section**)
+- try, finally 블럭 사용
+## 네트워크 호출 구현
+- **콜백**: 특정 이벤트가 발생하면 즉시 호출되어 처리되는 함수. 시스템이나 이벤트에 따라 시점이 정해짐
+- try, catch 블럭 사용 
+
+# 5. 코틀린의 다양한 함수
+- **익명함수**: `val add = fun(x:Int, y:Int) =x+y`처럼 이름 없이 사용. 람다식에 비해 return이나 제어문 사용하기 편리
+- **인라인 함수**: `inline fun`으로 정의. 파라미터가 함수 안으로 들어간 코드가 그대로 복사되어 사용됨. return이 포함된 람다식 함수를 넘긴 경우, non-local return 발생(`crossinline`으로 방지)
+- **확장 함수**
+	- **Any** 클래스의 함수를 확장하면 모든 요소에 상속 됨
+	- 동일한 이름의 멤버 함수나 메소드가 존재하면, 멤버 메소드가 우선
+```
+fun String.getLongerString(src: String): String = 
+	if(this.length >src.length) this else src
+```
+- **중위 함수**: 함수명을 연산자처럼 이용
+	- 멤버 메소드 또는 확장 함수여야 한다.
+	- 하나의 파라미터를 가져야 한다.
+	- `infix` 키워드를 사용하여 정의한다.
+```
+val multi = 3 multiply 10
+
+infix fun Int.multiply(x:Int):Int{
+	return this * x
+}
+```
+- **꼬리 재귀 함수**
+	- `tailrec` 키워드 사용
+	- stack overflow 방지
+	- 값을 계산한 후, 함수 호출
+```
+tailrec fun factorial(n:Int, run:Int=1):Long{
+	return if(n==1) run.toLong() else factorial(n-1,run*n)
+}
+```
+
+# 6. 함수와 변수의 범위
+- 최상위 함수: 파일 안에서 바로 선언된 함수
+	- 최상위 함수는 순서에 상관없이 서로 호출할 수 있음
+- 지역 함수: 최상위 함수 안에 선언된 함수

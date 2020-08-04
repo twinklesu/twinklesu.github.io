@@ -1,0 +1,60 @@
+﻿# 4. 프로그램의 흐름 제어
+## 1. 조건문
+- if 문에서 수행할 문장이 한 줄이면 {} 생략 가능
+- `val max = if (a>b) a else b`와 같이 단순한 형태 가능 
+- 수행할 문장이 여러줄인 경우, 마지막 줄이 변수에 할당 됨
+	```
+	val max = if(a>b){
+		println("a")
+		a //마지막 줄이 대입 됨
+	}
+	else
+	...
+	``` 
+- {} 없는 `else if`문
+	```
+	val result = if (number>0)
+			"positive"
+		else if (number<0)
+			"negative"
+		else
+			"zero"
+	```
+- **range** 연산자: `num in n..k`
+- **where**문:
+	```
+	when(x){
+		condition -> statement
+		...
+		else -> statement
+	}
+	``` 
+	- condition에 `in a..b` 사용 가능 
+	- condition에 `is String`등 타입 확인 사용 가능
+	- 인자없이 `when {...}`으로 if문처럼 활용
+
+## 2. 반복문
+- `for (x in 1..5) println(x)`의 형태
+- 역순은 `for (i in 5 downTo 1) println(i)` 로 **downTo** 사용
+- `for (i in 1..5 step 2) print(i)`처럼 **step**을 활용해 n씩 건너뛰기
+
+## 3. 흐름의 중단과 반환
+- **return** 
+	- 값 반환
+	- void 함수의 경우 **Unit**을 리턴. `return Unit`이라고 하거나 생략함
+	- **label**: 람다식의 경우 `return`을 사용하면 전체 함수를 빠져나오게 됨(non-local return). 
+		- `labelName@{}`와 같이 블럭을 라벨링하고, `return@labelName`으로 리턴함
+		- 람다식의 이름을 활용해 라벨링 없이 `return@lambdaName`으로 리턴 가능
+- `break`와 `continue`에서도 `@`이용해 중단할 블럭 명시 가능
+- **try~catch**문
+	```
+	try{
+		예외가 발생할 수 있는 statement
+	} catch(e: exception class){
+		예외 처리 구문
+	} finally{
+		예외와 무관하게 반드시 실행되야 하는 statement
+	}
+	```
+	- `throw Exception(message: String)`통해 직접 예외를 발생시킬 수 있음
+	- `class UserExceptionName(message: String): Exception(message)`로 예외 클래스 정의 할 수 있음

@@ -1,0 +1,88 @@
+﻿# 12. 안드로이드 앱 개발과 코틀린
+## 1. 개발 환경
+- **Gradle	Scripts**:Groovy 언어 DSL 스크립트
+	- build.gradle(Project)
+		- dependencies: gradle version이 있어서 build 관련 lib 다운로드
+	- build.gradle(app module)
+- app
+	- **manifests**
+		- AndroidManifest.xml
+			- app 이름
+			- Activity: UI 객체
+			```
+				<applicaiton   //app name, theme, icon  > 	
+				<activity   //first UI init    >  
+					<intent-filter>
+						<action>  //action.MAIN
+						<category>  //action.LAUNCHER
+			```
+			- 새로운 activity 추가시 태그 추가해 줘야함 
+	- **java**
+		- MainActivity.kt
+			- `AppCompatActivity()` 상속: 안드로이드 하위 호환성을 위해
+			- 콜백 함수
+				- `onCreate()`: app 최초 실행 시, 생성 단계 진입 메소드
+				- `setContentView(R.layout.activity_main)` 를 통해 레이아웃 xml을 실제 화면 UI로 구성
+	- **res**
+		- drawble: 그림, 배경 생상 res
+		- layout: UI 정의 xml
+			- `activity_main.xml`
+			```
+			<ConstraintLayout> //container
+				<TextView> //...
+			```
+			- **wrap_content**: 현재 view에 맞춰 크기 조정
+			- **match_parent**: 부모 view에 맞춰
+		- mipmap: icon src
+		- values: 색상, 문자열, 스타일 xml
+
+## 2. 안드로이드의 구성 요소
+### 4대 요소
+1. **Activity**
+	- UI
+	- 동작 구현 코드 필요 -> 이벤트 처리, UI 갱신
+	- **Main Thread (UI Thread)**
+		- activity 제어, 구동
+		- app이 구동되면 `onCreate()`함수를 main처럼 진입점으로
+	- 생명주기: CallBack 함수.
+		1. `onCreate()`: 반드시 구현. `setContentView()` 통해 UI그림
+		2. `onStart()`
+		3. `onResume()`: 다시 시작
+		4. `onPause()`: app이 다른 것에 의해 가려진 경우
+		5. `onStop()`
+		6. `onDestroy()`: 안드로이드의 back키로 **back stack**에 들어있는 액티비티가 다 빠지면 호출 / 메모리 부족 시 강제 호출
+		7. `onRestart()`
+		- `onSaveInstanceState()`와 `onRestoreInstacneState()` 오버라이딩 해 주어야 함![](https://developer.android.com/guide/components/images/activity_lifecycle.png?hl=ko)
+	- `lateinit`
+		- 지연 초기화
+		- 미리 정의해 두고, 콜백 함수 안에서 초기화 해 사용
+		- `private lateinit var varName: varType`
+		- `onCreate()` 이전에 정의할 수 없기 때문
+		- `getSystemService(AlarmManager::class.java)`: 안드로이드 기본 시스템 서비스에 접근 할 수 있음
+	- `by lazy`
+		- 첫 접근시 초기화 구문이 실행 됨
+2. **Service**
+	- 백그라운드에서 계속 실행
+	- UI 없음
+	- main thread가 제어
+	- app 내의 서비스: `startService()` / `stopService()`
+	- 다른 app, 다른 프로세스: `bindService()` / `unbindService()`. AIDL 사용 & Parcel로 데이터 전달
+3. Broadcast Receiver
+	- 이벤트, 정보 전달
+4. Content Provider
+	- 데이터 관리, 제공
+	- URI로 구분
+	
+- **Intent**
+	- 4대 요소 간의 메세지 전달
+	- 명시적 인텐트: 특정 클래스 지정
+	- 묵시적 인텐트: 특정 데이터에 대해 수행할 액션 지정. 여러 요소 호출 가능
+- View
+	- widget: 보이는 요소. TextView, Button
+	- 보이지 않는 요소. Fragment
+- Fragment
+	- 생명주기 activity보다 다양하다
+	- `onAttach()`: activity에 frag 추가
+	- `onDetach()`: frag 제거
+	- `onCreateView()`: 프로그램 실행 중간에 view 반환
+	- `onActivityCreated()`: 완전한 UI 구성 이후 동작

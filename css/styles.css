@@ -55,9 +55,11 @@ body {
   color: black;
   font-family: 'Poor Story', cursive;
 }
+
 .site-category{
   background: $brand-color;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid #FF8C69;
+  color: #FF8C69;
   margin:auto;
   padding:0;
   font-size:14px;
@@ -65,8 +67,7 @@ body {
   clear:left;
   }
 
-  .site-category ul{
-  //background: rgb(109,109,109);
+.site-category ul{
   height:50px;
   list-style:none;
   line-height: 1.5;
@@ -75,13 +76,13 @@ body {
   display:inline-block;
   }
 
-  .site-category li{
+.site-category li{
   float: left;
   display:inline;
 
   }
 
-  .site-category li a{
+.site-category li a{
   background: $brand-color;
   display:block;
   font-weight:normal;
@@ -92,12 +93,13 @@ body {
   text-decoration:none;
   }
 
-  .site-category li a:hover{
+.site-category li a:hover{
   background: rgb(71,71,71);
   color:#FFFFFF;
   text-decoration:none;
   }
-  .site-category li ul{
+
+.site-category li ul{
   background: rgb(109,109,109);
   display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
   height:auto;
@@ -111,7 +113,7 @@ body {
   /*left:0;*/
   }
 
-  .site-category li li {
+.site-category li li {
   background: $brand-color;
   display:block;
   float:none;
@@ -120,11 +122,11 @@ body {
   width:200px;
   }
 
-  .site-category li:hover li a{
+.site-category li:hover li a{
   background:none;
   }
 
-  .site-category li ul a{
+.site-category li ul a{
   display:block;
   height:50px;
   font-size:12px;

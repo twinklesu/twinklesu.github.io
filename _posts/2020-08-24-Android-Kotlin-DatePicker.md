@@ -6,7 +6,8 @@ date: 2020-08-24 01:53:30
 permalink: '/android'
 ---
 
-# Kotlin DatePicker
+# 안드로이드 캘린더에서 날짜 고르는 
+
 버튼을 누르면 캘린더가 떠서 날짜를 고르고, 시계가 떠서 시간을 고르는 기능! 
 
 ![image](https://user-images.githubusercontent.com/68603692/90983080-77796e00-e5a6-11ea-9efe-6c95fbf5122b.png)

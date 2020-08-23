@@ -1,3 +1,11 @@
+---
+layout: post
+comments: true
+title: "Andorid Kotlin DatePicker 만들기"
+date: 2020-08-24 01:53:30
+permalink: '/android'
+---
+
 # Kotlin DatePicker
 버튼을 누르면 캘린더가 떠서 날짜를 고르고, 시계가 떠서 시간을 고르는 기능! 
 

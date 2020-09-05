@@ -1,0 +1,67 @@
+---
+layout: post
+comments: true
+title: "CS231n Vision Deep Learning 강의"
+date: 2020-09-05 23:15:30
+categories: [DeepLearning]
+---
+
+# 2. Image Classification
+
+## Image Classification의 어려운 점 
+- semantic gap : 사진을 이미지로 보는게 아니라 픽셀의 숫자로 봄
+- viewpoint variation 
+- background clutter
+- Illumination : 밝기나 음영
+- occlusion : 다른 사물에 가려져 구분이 힘든 경우
+- deformation
+- intracalss variation : 같은 종류지만 다 다른 생김새
+
+image 에서 edge를 추출하는 방향을 생각했지만, 너무 불안정하고 케이스가 다양해 비효율이였다.
+그래서 data-driven approach로 이미지셋을 라벨링하고 머신러닝 모델을 훈련시켜 새 이미지를 구분해내게 했다.
+- **CIFAR10** data set
+	- 10 classes
+	- 50,000 trn-img
+	- 10,000 tst-img
+	- 32*32 piexel
+
+## Nearest Neighbor
+- L1 distance (Manhattan)
+	![image](https://user-images.githubusercontent.com/68603692/92305563-688db500-efc3-11ea-9107-3d7cf5e67363.png)
+
+	- Train O(1) , Predict O(N)
+	-> **훈련을 느리게하고, 예측을 빠르게 할 순 없을까?**
+
+- **KNN** 
+	- majority vote	![image](https://user-images.githubusercontent.com/68603692/92305635-100ae780-efc4-11ea-84b0-d52e5747799f.png)
+
+- L2 distance (Euclidean)
+	![image](https://user-images.githubusercontent.com/68603692/92305695-7d1e7d00-efc4-11ea-865d-6ce3f1f50819.png)
+
+- **Hyper-parameter**
+	- **우리**가 알고리즘을 위해 **선택**한 것
+	- problem dependent -> try and pick!
+	- k, distance matrix...
+	- data set -> train, validation, test 로 나눠서 사용
+		1. train으로 여러 모델들을 학습한다(하이퍼 파라미터를 다르게 해서)
+		2. vaildaion으로 가장 나은 모델을 고른다
+		3. test로 그 모델을 평가한다.
+	- **cross-validation**![image](https://user-images.githubusercontent.com/68603692/92305895-6d079d00-efc6-11ea-8194-f291f534b388.png)
+	이 예시는 **five fold** 
+		- fold를 돌아가며 하나씩 validation에 사용해서 효율성 높이기
+		- 딥러닝에서는 데이터가 크기 때문에 잘 사용하지 않는다
+		- ~~엥 validation 여러번 하는게 장점인건가?~~
+
+
+## Linear Classification
+- parametric model 
+	- **W, weight**
+	- $f(x, W)$
+	- $f(x,W) = Wx + b$ (b는 bias)
+	![image](https://user-images.githubusercontent.com/68603692/92306461-29af2d80-efca-11ea-8f73-f1bad697c00c.png)
+	(CIFAR10 linear classifiacation의 W)
+
+## 꼼지락
+knn 알고리즘은 머신러닝으로 학교에서 이미 배운거라 복잡하지 않게 들었는데, cross validation이 조금 헷갈려서 더 찾아봐야겠다. 
+L2를 이미지 비교에 사용한다는게 이해가 계속 안됐는데, 마지막에 교수님이 KNN은 이미지에 사용하지 않는 알고리즘이라고 해서 그냥 그만 생각해보기로 했다. 픽셀의 비슷함을 L2로....
+다 듣고나서 보니까 notes가 자세히 잘 나와있어서 다음부터는 강의는 그냥 집중해서 듣고, 노트를 읽어야겠다! 과제하고, 자야지! 

@@ -16,6 +16,11 @@ highlighter: rouge
 paginate: 15
 paginate_path: "/blog/page:num/"
 
+# Comment settings
+utterances:
+    enable: true
+
+
 
 collections:
   posts:
@@ -23,5 +28,6 @@ collections:
     permalink: /posts/:path/
   seminars:
     output: true
+    permalink: /seminars/:path/
 
 

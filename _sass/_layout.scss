@@ -138,9 +138,16 @@ margin-bottom: $vertical-spacing-unit;
 .post-title {
 font-size: 40px;
 letter-spacing: -1px;
-line-height: 1;
+line-height: 45px;
 @include media-query($on-laptop) {
 font-size: 36px;
+    }
+}
+.post-description {
+    font-size:26px;
+    line-height: 30px;
+    @include media-query($on-laptop) {
+font-size: 24px;
     }
 }
 .post-content {
